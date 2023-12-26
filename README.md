@@ -25,5 +25,10 @@ Cause of Deaths around the World (Historical Data)
 * `afData`
   * 對應到 AF.html, AF.js，包含非洲資料的數據總和，以及非洲各國的數據資料
 * `asData`, `euData`, `naData`, `ocData`, `saData`
-  * 同理於 afData
-
+  * 同理於 `afData`
+* `loadData()`
+  * 就是處理上述的這幾種變數
+* `getData()`
+  * export 給其他 JS 使用，會根據指定的地區載入 `worldData`/`afData`/`asData`/`euData`/`naData`/`ocData`/`saData`
+  * 如果剛開始 world.html 載入時，因為 `allData` 是 undefined，所以會呼叫 `loadData`
+  * 再來會根據指定的時間和死因呼叫 `filterData(data, selectedDeathCause, selectedYear)`
