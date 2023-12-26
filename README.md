@@ -37,6 +37,6 @@ Cause of Deaths around the World (Historical Data)
 * `sumByYear_all(allData)`, `sumByYear_continents(data, continent, code)`
   * 得出一年一度的，各種病因的死亡人數和，前者算出全世界的人數和，後者算出各洲的人數和。這些總和的rows會被插入 allData 裡面
 * `data getWorldAndContinentsData()`
-  * 這是專給 `worldData` 用的，從 `allData`
+  * 這是專給 `worldData` 用的，從 `allData` 拉出全世界的資料跟各大洲的資料
 * `filteredData = filterData(data, selectedDeathCause, selectedYear)`
   * 根據選出的年份和死因，選出過濾的資料
