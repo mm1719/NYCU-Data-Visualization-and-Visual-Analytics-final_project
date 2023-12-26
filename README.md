@@ -51,6 +51,9 @@ Cause of Deaths around the World (Historical Data)
   * click 圓點 -> 圓點變黑 -> 三角形跟隨過去 -> 更新標題的時間以及呼叫 `getData`
   * drag 三角形 -> 被指到的圓點變黑 -> 更新標題的時間以及呼叫 `getData` (這是即時的)
 * `handleButtonClick(event)`
-  * 處理第一種情形到三角形跟隨過去
+  * 被點擊時啟動，處理第一種情形，負責圓點變黑和三角形跟隨
 * `setActiveButton(selectedYear)`
+  * dragging 三角形時啟動，負責圓點變黑並呼叫 `setTriangle(button)` 和 `handleYearSelection(selectedYear)`
+  * 如果 `sessionStorage.getItem("selectedYear")` 的值改變了 ，並啟動。
+* ``  
  
