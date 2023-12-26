@@ -18,8 +18,12 @@ Cause of Deaths around the World (Historical Data)
 
 ### deathData.js
 * 將 data/cause_of_death.csv 載入並做預先處理
-* allData: 除了原本 kaggle 給的各國的數據資料，還有各大洲的數據總和，以及全球的數據總和
-* worldData: 對應到 world.html, world.js，僅有全球總合和各大洲數據總和的資料
-* afData: 對應到 AF.html, AF.js，包含非洲資料的數據總和，以及非洲各國的數據資料
-* asData, euData, naData, ocData, saData: 同理於 afData
+* allData
+ * 除了原本 kaggle 給的各國的數據資料，還有各大洲的數據總和，以及全球的數據總和
+* worldData
+ * 對應到 world.html, world.js，僅有全球總合和各大洲數據總和的資料
+* afData
+ * 對應到 AF.html, AF.js，包含非洲資料的數據總和，以及非洲各國的數據資料
+* asData, euData, naData, ocData, saData
+ * 同理於 afData
 
