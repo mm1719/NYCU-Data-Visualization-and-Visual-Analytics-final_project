@@ -32,6 +32,7 @@ Cause of Deaths around the World (Historical Data)
   * export 給其他 JS 使用，會根據指定的地區載入 `worldData`/`afData`/`asData`/`euData`/`naData`/`ocData`/`saData`
   * 如果剛開始 world.html 載入時，因為 `allData` 是 undefined，所以會呼叫 `loadData`
   * 再來會根據指定的時間和死因呼叫 `filterData(data, selectedDeathCause, selectedYear)`
+  * 要同時滿足 `selectedDeathCause` 和 `selectedYear` 存在才會，啟動!
 * `data = selectContinentData(code)`
   * 根據指定的洲代碼，取出相對應的國家資料並回傳。
 * `sumByYear_all(allData)`, `sumByYear_continents(data, continent, code)`
@@ -40,3 +41,7 @@ Cause of Deaths around the World (Historical Data)
   * 這是專給 `worldData` 用的，從 `allData` 拉出全世界的資料跟各大洲的資料
 * `filteredData = filterData(data, selectedDeathCause, selectedYear)`
   * 根據選出的年份和死因，選出過濾的資料
+
+###  dropdown.js
+* 主要都是跟 dropdown 互動的function 我寫完了但看不懂
+* 會去檢查如果 `sessionStorage.getItem("selectedDeathCause")` 的值改變了，就會呼叫 `getData`
