@@ -32,3 +32,11 @@ Cause of Deaths around the World (Historical Data)
   * export 給其他 JS 使用，會根據指定的地區載入 `worldData`/`afData`/`asData`/`euData`/`naData`/`ocData`/`saData`
   * 如果剛開始 world.html 載入時，因為 `allData` 是 undefined，所以會呼叫 `loadData`
   * 再來會根據指定的時間和死因呼叫 `filterData(data, selectedDeathCause, selectedYear)`
+* `data = selectContinentData(code)`
+  * 根據指定的洲代碼，取出相對應的國家資料並回傳。
+* `sumByYear_all(allData)`, `sumByYear_continents(data, continent, code)`
+  * 得出一年一度的，各種病因的死亡人數和，前者算出全世界的人數和，後者算出各洲的人數和。這些總和的rows會被插入 allData 裡面
+* `data getWorldAndContinentsData()`
+  * 這是專給 `worldData` 用的，從 `allData`
+* `filteredData = filterData(data, selectedDeathCause, selectedYear)`
+  * 根據選出的年份和死因，選出過濾的資料
