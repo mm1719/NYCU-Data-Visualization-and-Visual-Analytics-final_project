@@ -10,7 +10,7 @@ Cause of Deaths around the World (Historical Data)
 * 啟動 VScode 的 live server 查看 world.html 頁面
 * world.js 會抓 data/continents/continents-topojson.json 的資料並畫出用六大洲劃分的世界地圖
 
-### AF/AS/EU/NA/OC/SA.html, AF/AS/EU/NA/OC/SA.js
+### AF.html,AS.html,EU.htmlNA.html,OC.html,SA.html, AF.js,AS.js,EU.js,NA.js,OC.js,SA.js
 * AF-非洲, AS-亞洲, EU-歐洲, NA-北美洲, OC-大洋洲, SA-南美洲
 * 從 world.html 點擊任一洲，便會進入指定的洲.html
 * 同理指定的洲.js 會抓 data/countries 裡的 JSON
@@ -70,3 +70,12 @@ Cause of Deaths around the World (Historical Data)
 * 這份檔案很早弄所以不複雜，目前沒有模組化(考慮以後模組化)，嵌在 AF/AS/EU/NA/OC/SA.html 的head
 * 載入 countries.json， 檢查更改古巴、賽普勒斯、巴勒斯坦、南蘇丹的國名為英文名，然後顯示出來
 * 之後考慮將 world.html 的 tooltip 整合進來，並加上數據及排名
+
+### style.css
+* 負責所有 objecst的 style
+
+### data/cause_of_death.csv
+* 這次數據視覺化使用的資料
+
+### data/continents
+* 裡面有 6大洲 的 GeogJSON 和 TopoJSON, 
