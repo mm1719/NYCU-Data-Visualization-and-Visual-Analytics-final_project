@@ -78,4 +78,7 @@ Cause of Deaths around the World (Historical Data)
 * 這次數據視覺化使用的資料
 
 ### data/continents
-* 裡面有 6大洲 的 GeogJSON 和 TopoJSON, 
+* 裡面有 6大洲 的 GeoJSON  和 TopoJSON, 僅使用到 TopoJSON
+
+### data/countries
+* 
