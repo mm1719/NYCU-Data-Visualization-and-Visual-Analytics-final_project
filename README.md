@@ -35,6 +35,7 @@ Cause of Deaths around the World (Historical Data)
   * 要同時滿足 `selectedDeathCause` 和 `selectedYear` 存在才會，啟動!
 * `data = selectContinentData(code)`
   * 根據指定的洲代碼，取出相對應的國家資料並回傳。
+  * 額外需要注意的是古巴、賽普勒斯、巴勒斯坦、南蘇丹的國家代碼有點政治不正確，且與原本 dataset 的代碼相左，需額外更改。
 * `sumByYear_all(allData)`, `sumByYear_continents(data, continent, code)`
   * 得出一年一度的，各種病因的死亡人數和，前者算出全世界的人數和，後者算出各洲的人數和。這些總和的rows會被插入 allData 裡面
 * `data getWorldAndContinentsData()`
@@ -63,5 +64,5 @@ Cause of Deaths around the World (Historical Data)
 * `handleYearSelection(year)`
   * 如果 `sessionStorage.getItem("selectedYear")` 的值改變了，就會呼叫 `getData()`
 * `updateTitle(year)`
-  * 更新標題的年份
+  * 更新標題的年份。
  
