@@ -44,7 +44,8 @@ Cause of Deaths around the World (Historical Data)
 
 ###  dropdown.js
 * 主要都是跟 dropdown 互動的function 我寫完了但看不懂
-* 在進入新的頁面時，會去檢查如果 `sessionStorage.getItem("selectedDeathCause")` 的值改變了，就會呼叫 `getData`
+* 會呼叫 `sessionStorage.getItem("selectedDeathCause")`
+* 如果 `sessionStorage.getItem("selectedDeathCause")` 的值改變了，就會呼叫 `getData`
 
 ### timeline.js
 * 有點複雜，主要有三種觸發流程
@@ -59,5 +60,6 @@ Cause of Deaths around the World (Historical Data)
   * 處理第三種情形
 * `setTriangle(button)`
   * 找出 button 的位置隨後三角形移動過去
-* ``
+* `handleYearSelection(year)`
+  * 如果 `sessionStorage.getItem("selectedYear")` 的值改變了，就會呼叫 `getData`
  
