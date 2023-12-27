@@ -1,11 +1,16 @@
 name: Build and Deploy world.html
 
 on:
-    push:
-        branches:
-            - main
-        paths:
-            - 'world.html'
+  push:
+    branches:
+      - '**'
+    paths:
+      - 'world.html'
+  pull_request:
+    branches:
+      - '**'
+    paths:
+      - 'world.html'
 
 jobs:
     build-and-deploy:
