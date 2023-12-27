@@ -67,6 +67,6 @@ Cause of Deaths around the World (Historical Data)
   * 更新標題的年份。
  
 ### tooltip.js
-* 這份檔案很早弄所以不複雜，目前沒有模組化(考慮以後模組化)，嵌在AF/AS/EU/NA/OC/SA.html的 <head>
+* 這份檔案很早弄所以不複雜，目前沒有模組化(考慮以後模組化)，嵌在AF/AS/EU/NA/OC/SA.html的 head
 * 載入 countries.json， 檢查更改古巴、賽普勒斯、巴勒斯坦、南蘇丹的國名為英文名，然後顯示出來
 * 之後考慮將 world.html 的 tooltip 整合進來，並加上數據及排名
