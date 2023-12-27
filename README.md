@@ -30,7 +30,7 @@ Cause of Deaths around the World (Historical Data)
   * 就是處理上述的這幾種變數
 * `getData()`
   * export 給其他 JS 使用，會根據指定的地區載入 `worldData`/`afData`/`asData`/`euData`/`naData`/`ocData`/`saData`
-  * 如果剛開始 world.html 載入時，因為 `allData` 是 undefined，所以會呼叫 `loadData`
+  * 如果剛開始 world.html 載入時，因為 `allData` 是 undefined，所以會呼叫 `loadData()`
   * 再來會根據指定的時間和死因呼叫 `filterData(data, selectedDeathCause, selectedYear)`
   * 要同時滿足 `selectedDeathCause` 和 `selectedYear` 存在才會，啟動!
 * `data = selectContinentData(code)`
@@ -45,13 +45,13 @@ Cause of Deaths around the World (Historical Data)
 ###  dropdown.js
 * 主要都是跟 dropdown 互動的function 我寫完了但看不懂
 * 會呼叫 `sessionStorage.getItem("selectedDeathCause")`
-* 如果 `sessionStorage.getItem("selectedDeathCause")` 的值改變了，就會呼叫 `getData`
+* 如果 `sessionStorage.getItem("selectedDeathCause")` 的值改變了，就會呼叫 `getData()`
 
 ### timeline.js
 * 有點複雜，主要有三種觸發流程
   * click 圓點 -> 圓點變黑 -> 三角形跟隨過去 -> 更新標題的時間以及呼叫 `getData`
   * drag 三角形 -> 被指到的圓點變黑 -> 更新標題的時間以及呼叫 `getData` (這是即時的)
-  * 在進入新的頁面時，`sessionStorage.getItem("selectedYear")` 的值改變了 -> 指定的圓點變黑 -> 三角形跟隨過去 -> 更新標題的時間以及呼叫 `getData`
+  * 在進入新的頁面時，`sessionStorage.getItem("selectedYear")` 的值改變了 -> 指定的圓點變黑 -> 三角形跟隨過去 -> 更新標題的時間以及呼叫 `getData()`
 * `handleButtonClick(event)`
   * 被點擊時啟動，處理第一種情形，負責圓點變黑和三角形跟隨
 * `setActiveButton(selectedYear)`
@@ -61,5 +61,7 @@ Cause of Deaths around the World (Historical Data)
 * `setTriangle(button)`
   * 找出 button 的位置隨後三角形移動過去
 * `handleYearSelection(year)`
-  * 如果 `sessionStorage.getItem("selectedYear")` 的值改變了，就會呼叫 `getData`
+  * 如果 `sessionStorage.getItem("selectedYear")` 的值改變了，就會呼叫 `getData()`
+* `updateTitle(year)`
+  * 更新標題的年份
  
