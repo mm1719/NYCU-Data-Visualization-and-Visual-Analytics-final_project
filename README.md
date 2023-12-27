@@ -3,7 +3,7 @@ Cause of Deaths around the World (Historical Data)
 
 
 ## 檔案說明
-所有的javascript檔案都用模組化的方式寫
+大部分的javascript檔案都用模組化的方式寫
 
 ### world.html, world.js
 * world.html 是這次project 的主頁面
@@ -66,3 +66,7 @@ Cause of Deaths around the World (Historical Data)
 * `updateTitle(year)`
   * 更新標題的年份。
  
+### tooltip.js
+* 這份檔案很早弄所以不複雜，目前沒有模組化(考慮以後模組化)，嵌在AF/AS/EU/NA/OC/SA.html的 <head>
+* 載入 countries.json， 檢查更改古巴、賽普勒斯、巴勒斯坦、南蘇丹的國名為英文名，然後顯示出來
+* 之後考慮將 world.html 的 tooltip 整合進來，並加上數據及排名
