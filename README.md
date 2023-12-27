@@ -3,14 +3,14 @@ Cause of Deaths around the World (Historical Data)
 
 
 ## 檔案說明
-所有的javascript檔案都用模組化的方式寫
+大部分的javascript檔案都用模組化的方式寫
 
 ### world.html, world.js
 * world.html 是這次project 的主頁面
 * 啟動 VScode 的 live server 查看 world.html 頁面
 * world.js 會抓 data/continents/continents-topojson.json 的資料並畫出用六大洲劃分的世界地圖
 
-### AF/AS/EU/NA/OC/SA.html, AF/AS/EU/NA/OC/SA.js
+### AF.html, AS.html, EU.html, NA.html, OC.html, SA.html; AF.js, AS.js, EU.js NA.js, OC.js, SA.js
 * AF-非洲, AS-亞洲, EU-歐洲, NA-北美洲, OC-大洋洲, SA-南美洲
 * 從 world.html 點擊任一洲，便會進入指定的洲.html
 * 同理指定的洲.js 會抓 data/countries 裡的 JSON
@@ -35,6 +35,7 @@ Cause of Deaths around the World (Historical Data)
   * 要同時滿足 `selectedDeathCause` 和 `selectedYear` 存在才會，啟動!
 * `data = selectContinentData(code)`
   * 根據指定的洲代碼，取出相對應的國家資料並回傳。
+  * 額外需要注意的是古巴、賽普勒斯、巴勒斯坦、南蘇丹的國家代碼有點政治不正確，且與原本 dataset 的代碼相左，需額外更改。
 * `sumByYear_all(allData)`, `sumByYear_continents(data, continent, code)`
   * 得出一年一度的，各種病因的死亡人數和，前者算出全世界的人數和，後者算出各洲的人數和。這些總和的rows會被插入 allData 裡面
 * `data getWorldAndContinentsData()`
@@ -63,5 +64,22 @@ Cause of Deaths around the World (Historical Data)
 * `handleYearSelection(year)`
   * 如果 `sessionStorage.getItem("selectedYear")` 的值改變了，就會呼叫 `getData()`
 * `updateTitle(year)`
-  * 更新標題的年份
+  * 更新標題的年份。
  
+### tooltip.js
+* 這份檔案很早弄所以不複雜，目前沒有模組化(考慮以後模組化)，嵌在 AF/AS/EU/NA/OC/SA.html 的head
+* 載入 countries.json， 檢查更改古巴、賽普勒斯、巴勒斯坦、南蘇丹的國名為英文名，然後顯示出來
+* 之後考慮將 world.html 的 tooltip 整合進來，並加上數據及排名
+
+### style.css
+* 負責所有 objecst的 style
+
+### data/cause_of_death.csv
+* 這次數據視覺化使用的資料
+
+### data/continents
+* 裡面有 6大洲 的 GeoJSON  和 TopoJSON, 僅使用到 TopoJSON
+
+### data/countries
+* countries.json 有各國的國名和國家代碼, 須注意古巴、賽普勒斯、巴勒斯坦、南蘇丹的國名和國家代碼
+* 裡面還有各洲的資料夾，底下是該洲各國的 GeoJSON 和 TopoJSON, 僅使用到 TopoJSON
