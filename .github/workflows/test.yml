@@ -2,6 +2,8 @@ name: Build and Deploy world.html
 
 on:
     push:
+        branches:
+            - main
         paths:
             - 'world.html'
 
