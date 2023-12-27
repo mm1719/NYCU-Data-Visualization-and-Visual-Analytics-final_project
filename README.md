@@ -81,4 +81,5 @@ Cause of Deaths around the World (Historical Data)
 * 裡面有 6大洲 的 GeoJSON  和 TopoJSON, 僅使用到 TopoJSON
 
 ### data/countries
-* 
+* countries.json 有各國的國名和國家代碼, 須注意古巴、賽普勒斯、巴勒斯坦、南蘇丹的國名和國家代碼
+* 裡面還有各洲的資料夾，底下是該洲各國的 GeoJSON 和 TopoJSON, 僅使用到 TopoJSON
