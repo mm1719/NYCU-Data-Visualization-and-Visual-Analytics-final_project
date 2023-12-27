@@ -22,12 +22,12 @@ function handleButtonClick(event) {
 
     // Move the triangle to the new X position
     const triangle = document.getElementById("draggable-triangle");
-    triangle.style.transform = `translateX(${triangleNewX}px)`;
+    triangle.style.transform = `translate(${triangleNewX}px, -170px)`;
 
-    setTriangle(clickedButton);
+    //setTriangle(clickedButton);
 }
 
-export function setActiveButton(selectedYear) {
+function setActiveButton(selectedYear) {
     // Find all buttons
     const buttons = document.querySelectorAll(".year");
     //console.log(buttons);
@@ -91,6 +91,7 @@ document.querySelectorAll(".year").forEach(button => {
     });
 });
 
+
 // Get the position of each button
 const buttonInfo = Array.from(document.querySelectorAll(".year")).map((button, index) => {
     const rect = button.getBoundingClientRect();
@@ -101,8 +102,6 @@ const buttonInfo = Array.from(document.querySelectorAll(".year")).map((button, i
     return { position: centerX, year: year};
 });
 //console.log(buttonInfo);
-
-
 
 const leftBoundary = buttonInfo[0].position - 20;
 const rightBoundary = buttonInfo[buttonInfo.length - 1].position - 20;
