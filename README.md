@@ -10,7 +10,7 @@ Cause of Deaths around the World (Historical Data)
 * 啟動 VScode 的 live server 查看 world.html 頁面
 * world.js 會抓 data/continents/continents-topojson.json 的資料並畫出用六大洲劃分的世界地圖
 
-### AF.html, AS.html, EU.html, NA.html, OC.html, SA.html, AF.js, AS.js, EU.js, NA.js, OC.js, SA.js
+### AF.html, AS.html, EU.html, NA.html, OC.html, SA.html; AF.js, AS.js, EU.js NA.js, OC.js, SA.js
 * AF-非洲, AS-亞洲, EU-歐洲, NA-北美洲, OC-大洋洲, SA-南美洲
 * 從 world.html 點擊任一洲，便會進入指定的洲.html
 * 同理指定的洲.js 會抓 data/countries 裡的 JSON
