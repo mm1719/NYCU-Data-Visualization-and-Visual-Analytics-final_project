@@ -2,7 +2,6 @@
 import { get_country_data } from "./deathData.js";
 const svg = d3.select("svg");
 const tooltip = d3.select("#tooltip");
-
 export function present_info_by_country_code(country_code) {
     
     let country_data; 
@@ -21,12 +20,12 @@ export function present_info_by_country_code(country_code) {
             total_deaths += +country_data[keys[i]];
         }
     }
-    presenting_data[1].value = total_deaths;
+    presenting_data[1].value = total_deaths + " ";
     for(let i = 2; i < presenting_data.length; i++) {
         presenting_data[i].value = Math.round(presenting_data[i].value / total_deaths * 10000) / 100;
     }
 
-    console.log(presenting_data);
+    // console.log(presenting_data);
     const width = 200, height = 200;
     let x = d3.scaleBand()
         .range([0, width])
@@ -37,11 +36,22 @@ export function present_info_by_country_code(country_code) {
         .domain([0, d3.max(drawing_data, function(d) { return d.value; })]);
 
     let color = d3.scaleSequential()
-        .domain([0, d3.max(drawing_data, function(d) { return d.value; })])
+        .domain([d3.min(drawing_data, function(d){return d.value}), d3.max(drawing_data, function(d) { return d.value; })])
         .interpolator((t) => d3.interpolateBlues(t * 0.8 + 0.3));
 
-    
-
+    console.log(presenting_data);
+    let min = 9999, max = -1;
+    for(let i = 0; i < presenting_data.length; i++) {
+        if(isNaN(presenting_data[i].value)|| presenting_data[i].label === "Total death") continue;
+        else{
+            if(presenting_data[i].value > max) max = presenting_data[i].value;
+            if(presenting_data[i].value < min) min = presenting_data[i].value;
+        }
+    }
+    let text_color = d3.scaleSequential()
+        .domain([min, max])
+        .interpolator((t) => d3.interpolateBlues(t * 0.8 + 0.3));
+        
     svg.selectAll("text").remove();
 
     svg.selectAll("text")
@@ -53,7 +63,7 @@ export function present_info_by_country_code(country_code) {
         .text(function(d) { return d.label + ": " + d.value + `${d.label !== "Country/Territory" ? (d.label !== "Total death" ? "%": " "): " "}`; })
         .attr("font-family", "Times New Roman")
         .attr("font-size", "15px")
-        .attr("fill", function(d){return (d.label === "Country/Territory" ? "black" : (d.label === "Total death"? "RGB(200,20,20)": color(d.value * 1000)))})
+        .attr("fill", function(d){return (d.label === "Country/Territory" ? "black" : (d.label === "Total death"? "RGB(200,20,20)": text_color(d.value)))})
         .attr("font-weight", "bold");
 
     svg.selectAll(".bar").remove();
@@ -66,6 +76,7 @@ export function present_info_by_country_code(country_code) {
  
      // Add y-axis to the SVG
     chartGroup.append("g")
+        .attr("class", "axis")
         .call(d3.axisLeft(y));
 
      // Add bars
@@ -99,4 +110,11 @@ export function present_info_by_country_code(country_code) {
             .style("opacity", 0);
     });
 
+}
+
+export function remove_all() {
+    svg.selectAll("text").remove();
+    svg.selectAll(".bar").remove();
+    svg.selectAll(".axis").remove();
+    
 }
