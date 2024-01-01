@@ -1,3 +1,4 @@
+
 let data;
 async function getCountryJson() {
     try {
@@ -25,3 +26,4 @@ function findEnglishNameByCode (countryCode){
         return null;
     }
 }
+

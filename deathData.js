@@ -1,4 +1,5 @@
 let allData, worldData, afData, asData, euData, naData, ocData, saData;
+let filteredData;
 async function loadData() {
     allData = await d3.csv("data/cause_of_deaths.csv");
 
@@ -54,7 +55,7 @@ export async function getData() {
     //console.log(selectedYear, selectedDeathCause);
     if (selectedDeathCause && selectedYear) {
         if (!allData) await loadData();
-        let filteredData;
+        
         switch (selectedGeo) {
             case "World":
                 filteredData = filterData(worldData, selectedDeathCause, selectedYear);
@@ -211,3 +212,9 @@ function filterData(data, selectedDeathCause, selectedYear) {
 document.addEventListener("DOMContentLoaded", function() {
     getData();
 });
+
+export function get_country_data( country_code ) {
+    
+    const counrty_data = filteredData.filter(d => d.Code === country_code);
+    return counrty_data;
+}
