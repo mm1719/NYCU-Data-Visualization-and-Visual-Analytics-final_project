@@ -1,4 +1,5 @@
-//import * as geojsonPlaces from "./node_modules/geojson-places/src/index.js";
+import { findEnglishNameByCode } from "./tooltip.js";
+
 sessionStorage.setItem("selectedGeo", "World");
 
 const svg = d3.select("svg");
@@ -31,17 +32,7 @@ d3.json("./data/continents/continents-topojson.json").then(function(geojson) {
             tooltip.transition()
                     .duration(100)
                     .style("opacity", 1);
-            tooltip.text(function () {
-                    switch (d.properties.continent_code) {
-                        case "AF": return "Africa";
-                        case "AS": return "Asia";
-                        case "EU": return "Europe";
-                        case "NA": return "North America";
-                        case "OC": return "Oceania";
-                        case "SA": return "South America";
-                        default: return ""; // No fill or default
-                    }
-                   });
+                    tooltip.text(findEnglishNameByCode(d.properties.continent_code));
         })
         .on("mousemove", function(event) {
             tooltip.style("top", (event.pageY) + "px")
