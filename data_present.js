@@ -53,7 +53,7 @@ export function present_info_by_country_code(country_code) {
         .attr("font-size", "15px")
         .attr("fill", function(d){return (d.label === "Country/Territory" ? "black" : (d.label === "Total death"? "RGB(200,20,20)": color(d.value * 1000)))})
         .attr("font-weight", "bold");
-0
+        
     svg.selectAll(".bar").remove();
     
 
