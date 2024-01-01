@@ -42,6 +42,7 @@
 }
 
 #backButton {
+    position: absolute;
     display: inline-flex;
     flex-direction: column;
     padding: 5px 10px;
@@ -52,7 +53,8 @@
     cursor: pointer;
     font-size: 12px;
     font-weight: bold;
-    transform: translate(-150px, -125px);  
+    transform: translate(820px, -160px);
+    z-index: 9999;
 }
 
 .timeline {
