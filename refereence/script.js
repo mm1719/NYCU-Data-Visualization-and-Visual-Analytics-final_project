@@ -27,12 +27,12 @@ for(var i = 0 ; i < 30 ; i++){
 		  .attr("fill-opacity", "0.5")
 		  .transition().duration(0).style('cursor', 'pointer')
 		
-		   /*if want mouse over to update the chart, Unblock me
+		//if want mouse over to update the chart, Unblock me
 		  // return value
 		  return_year = d3.select(this).attr('value')
 		  d3.select(".year_bar").attr("value",return_year)
 		  getValue()
-		  */
+		  
 		}
 		})
 

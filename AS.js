@@ -48,12 +48,19 @@ function present_info_by_country_code(country_code) {
     let presenting_data = [];
     let drawing_data = [];
     let keys = Object.keys(country_data);
+    let total_deaths = 0;
     presenting_data.push({label: "Country/Territory", value: country_data["Country/Territory"]});
+    presenting_data.push({label: "Total death", value: total_deaths});
     for(let i = 0; i < keys.length; i++) {
         if(keys[i] !== "Country/Territory" && keys[i] !== "Code" && keys[i] !== "Year") {
             presenting_data.push({label: keys[i], value: +country_data[keys[i]]});
             drawing_data.push({label: keys[i], value: +country_data[keys[i]]});
+            total_deaths += +country_data[keys[i]];
         }
+    }
+    presenting_data[1].value = total_deaths;
+    for(let i = 2; i < presenting_data.length; i++) {
+        presenting_data[i].value = Math.round(presenting_data[i].value / total_deaths * 10000) / 100 + "%";
     }
 
     console.log(presenting_data);
@@ -65,14 +72,15 @@ function present_info_by_country_code(country_code) {
         .enter()
         .append("text")
         .attr("x", 900) // Adjust this value to position your text
-        .attr("y", function(d, i) { return 50 + i * 30; }) // Adjust this value to position your text
+        .attr("y", function(d, i) { return 30 + i * 15; }) // Adjust this value to position your text
         .text(function(d) { return d.label + ": " + d.value; })
         .attr("font-family", "Times New Roman")
-        .attr("font-size", "12px")
-        .attr("fill", "black");
+        .attr("font-size", "15px")
+        .attr("fill", "black")
+        .attr("font-weight", "bold");
 
     svg.selectAll(".bar").remove();
-    const width = 240, height = 125;
+    const width = 200, height = 200;
 
     let x = d3.scaleBand()
         .range([0, width])
@@ -82,12 +90,14 @@ function present_info_by_country_code(country_code) {
         .range([height, 0])
         .domain([0, d3.max(drawing_data, function(d) { return d.value; })]);
 
-    
+    let color = d3.scaleSequential()
+        .domain([0, d3.max(drawing_data, function(d) { return d.value; })])
+        .interpolator((t) => d3.interpolateBlues(t * 0.8 + 0.3));
     // console.log(x);
     // console.log(y);
 
     let chartGroup = svg.append("g")
-                        .attr("transform", "translate(1200, 200)");
+                        .attr("transform", "translate(1300, 200)");
 
     
  
@@ -97,14 +107,15 @@ function present_info_by_country_code(country_code) {
 
      // Add bars
     let bars = chartGroup.selectAll(".bar")
-                    .data(presenting_data)
+                    .data(drawing_data)
                     .enter()
                     .append("rect")
                     .attr("class", "bar")
                     .attr("x", function(d) { return x(d.label); })
                     .attr("width", x.bandwidth())
                     .attr("y", function(d) { return y(d.value); })
-                    .attr("height", function(d) { return height - y(d.value); });
+                    .attr("height", function(d) { return isNaN(height - y(d.value)) ? 0 : height - y(d.value); })
+                    .attr("fill", function(d) { return color(d.value); });
 
     bars.on("mouseover", function(event, d) {
         tooltip.transition()
