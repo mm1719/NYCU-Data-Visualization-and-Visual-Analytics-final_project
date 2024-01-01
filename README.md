@@ -68,8 +68,10 @@ Cause of Deaths around the World (Historical Data)
  
 ### tooltip.js
 * 這份檔案很早弄所以不複雜，目前沒有模組化(考慮以後模組化)，嵌在 AF/AS/EU/NA/OC/SA.html 的head
-* 載入 countries.json， 檢查更改古巴、賽普勒斯、巴勒斯坦、南蘇丹的國名為英文名，然後顯示出來
+* 載入 countries.json
 * 之後考慮將 world.html 的 tooltip 整合進來，並加上數據及排名
+* `findEnglishNameByCode(countryCode)` 將二碼的國家代碼載入之後，搜尋countries.json並找出對應的國名並回傳
+* 特別注意的是要更改古巴、賽普勒斯、巴勒斯坦、南蘇丹的國名為英文名
 
 ### style.css
 * 負責所有 objecst的 style
