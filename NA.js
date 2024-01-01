@@ -1,4 +1,5 @@
 import { findEnglishNameByCode } from "./tooltip.js";
+import { present_info_by_country_code } from "./data_present.js";
 
 sessionStorage.setItem("selectedGeo", "North America");
 
@@ -20,6 +21,7 @@ d3.json("./data/countries/NA/NA-topojson.json").then(function(geojson) {
                     .duration(100)
                     .style("opacity", 1);
             tooltip.text(findEnglishNameByCode(d.properties.country_a2));
+            present_info_by_country_code(d.properties.country_a3);
         })
         .on("mousemove", function(event) {
             tooltip.style("top", (event.pageY) + "px")
