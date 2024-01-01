@@ -1,6 +1,7 @@
 
 import { get_country_data } from "./deathData.js";
 const svg = d3.select("svg");
+const tooltip = d3.select("#tooltip");
 
 export function present_info_by_country_code(country_code) {
     
