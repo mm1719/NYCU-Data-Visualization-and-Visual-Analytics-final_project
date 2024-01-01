@@ -83,6 +83,7 @@ export async function getData() {
         }
         console.log(filteredData);
         //console.log("Death Cause and Year are set!");
+        return filteredData;
     }
 }
 

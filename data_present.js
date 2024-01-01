@@ -3,6 +3,7 @@ import { get_country_data } from "./deathData.js";
 const svg = d3.select("svg");
 
 export function present_info_by_country_code(country_code) {
+    
     let country_data; 
     country_data =  get_country_data(country_code)[0];
     //console.log(country_data);
@@ -53,7 +54,7 @@ export function present_info_by_country_code(country_code) {
         .attr("font-size", "15px")
         .attr("fill", function(d){return (d.label === "Country/Territory" ? "black" : (d.label === "Total death"? "RGB(200,20,20)": color(d.value * 1000)))})
         .attr("font-weight", "bold");
-0
+
     svg.selectAll(".bar").remove();
     
 
@@ -97,8 +98,4 @@ export function present_info_by_country_code(country_code) {
             .style("opacity", 0);
     });
 
-    
-    
-    
-    
 }
