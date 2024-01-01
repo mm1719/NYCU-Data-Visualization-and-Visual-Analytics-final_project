@@ -49,12 +49,17 @@ async function loadData() {
 }
 
 export async function getData() {
-    let selectedDeathCause = "All Causes";
-    let selectedYear = "1990";
-    selectedDeathCause = sessionStorage.getItem("selectedDeathCause");
-    selectedYear = sessionStorage.getItem("selectedYear");
-    const selectedGeo = sessionStorage.getItem("selectedGeo");
-    //console.log(selectedYear, selectedDeathCause);
+
+    
+    let selectedDeathCause = sessionStorage.getItem("selectedDeathCause");
+    let selectedYear = sessionStorage.getItem("selectedYear");
+    let selectedGeo = sessionStorage.getItem("selectedGeo");
+    if (!selectedDeathCause) {
+        selectedDeathCause = "All Causes";
+    }
+    if (!selectedYear) {
+        selectedYear = "1990";
+    }
     if (selectedDeathCause && selectedYear) {
         if (!allData) await loadData();
         

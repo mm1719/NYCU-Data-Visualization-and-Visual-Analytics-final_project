@@ -1,5 +1,5 @@
 import { findEnglishNameByCode } from "./tooltip.js";
-import { present_info_by_country_code, remove_all } from "./data_present.js";
+import { present_info_by_country_code, remove_all, present_continent_data } from "./data_present.js";
 import { getData } from "./deathData.js";
 
 sessionStorage.setItem("selectedGeo", "Asia");
@@ -21,13 +21,14 @@ function drawMap() {
         continent_data = data;
         country_data = [];
         data_preprocess(continent_data);
-        color_scale = d3.scaleThreshold()
+        color_scale = d3.scaleSequential()
                 .domain([d3.min(country_data, function(d) { return d["Total death"]; }), d3.max(country_data, function(d) { return d["Total death"]; })])
-                .range(d3.schemeBlues[4]);
-        console.log(color_scale.domain());
+                .interpolator((t) => d3.interpolateBlues(t * 0.8 + 0.3));
+        // console.log(color_scale.domain());
         d3.json("./data/countries/AS/AS-topojson.json").then(function(geojson) {
             const countries = topojson.feature(geojson, geojson.objects.AS);
             // console.log(countries);
+            present_continent_data(country_data);
             svg.selectAll("path").data(countries.features)
                 .enter().append("path")
                 .attr("class", "countries")
@@ -50,6 +51,7 @@ function drawMap() {
                         .duration(100)
                         .style("opacity", 0);
                     remove_all();
+                    present_continent_data(country_data);
                     
                 });
         
@@ -97,7 +99,7 @@ function data_preprocess(data) {
         }
         country_data.push({"Code": data[i]["Code"], "Total death": death});
     }
-    console.log(country_data);
+    // console.log(country_data);
 }
 
 function fill_path_color(country_code) {
@@ -112,3 +114,4 @@ function fill_path_color(country_code) {
     return color_scale(country_data[index]['Total death']);
     
 }
+
