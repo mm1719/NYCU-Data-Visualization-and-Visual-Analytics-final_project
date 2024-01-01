@@ -1,4 +1,3 @@
-
 let data;
 async function getCountryJson() {
     try {
@@ -9,8 +8,18 @@ async function getCountryJson() {
 }
 getCountryJson();
 
-function findEnglishNameByCode (countryCode){
-    const country = data.find(country => country.country_a2 === countryCode);
+export function findEnglishNameByCode(countryCodeA2){
+    
+    switch (countryCodeA2) {
+        case "AF": return "Africa";
+        case "AS": return "Asia";
+        case "EU": return "Europe";
+        case "NA": return "North America";
+        case "OC": return "Oceania";
+        case "SA": return "South America";
+    }
+
+    const country = data.find(country => country.country_a2 === countryCodeA2);
     
     if (country && country.i18n && country.i18n.en) {
         if (country.country_a2 === "CU" || 
@@ -23,7 +32,6 @@ function findEnglishNameByCode (countryCode){
         };
         
     } else {
-        return null;
+        return "";
     }
 }
-
