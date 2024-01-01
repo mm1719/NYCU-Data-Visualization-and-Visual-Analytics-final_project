@@ -1,3 +1,5 @@
+import { findEnglishNameByCode } from "./tooltip.js";
+
 sessionStorage.setItem("selectedGeo", "North America");
 
 const svg = d3.select("svg");

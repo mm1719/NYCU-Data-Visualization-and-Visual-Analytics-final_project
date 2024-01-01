@@ -1,3 +1,5 @@
+import { findEnglishNameByCode } from "./tooltip.js";
+
 import { get_country_data } from "./deathData.js";
 sessionStorage.setItem("selectedGeo", "Asia");
 
