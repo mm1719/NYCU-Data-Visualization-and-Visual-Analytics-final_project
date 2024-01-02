@@ -79,6 +79,23 @@ yearButtons.forEach(button => {
     });
 });
 
+const triangle = document.getElementById("draggable-triangle");
+let lastPosition = { x: 0, y: 0 };
+triangle.addEventListener('mousedown', function(event) {
+    console.log('Triangle has been clicked');
+    lastPosition = { x: event.clientX, y: event.clientY };
+});
+
+triangle.addEventListener('mousemove', function(event) {
+    if (event.buttons === 1) { // 檢查滑鼠左鍵是否被按下
+        if (event.clientX !== lastPosition.x || event.clientY !== lastPosition.y) {
+            console.log('Triangle has moved');
+            drawMap();
+            lastPosition = { x: event.clientX, y: event.clientY };
+        }
+    }
+});
+
 function data_preprocess(data) {
     let keys = Object.keys(data[0])
     // console.log(keys);
@@ -90,7 +107,7 @@ function data_preprocess(data) {
         }
     }
     // console.log(data);
-    for(let i = 0; i < data.length - 2; i++) {
+    for(let i = 0; i < data.length - 1; i++) {
         let death = 0;
         for(let j = 0; j < keys.length; j++) {
             if(keys[j] !== "Year" && keys[j] !== "Code" && keys[j] !== "Country/Territory") {

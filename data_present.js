@@ -29,6 +29,23 @@ yearButtons.forEach(button => {
         update_data(); // 假設您有一個函數可以根據新的數據繪製地圖
     });
 });
+
+const triangle = document.getElementById("draggable-triangle");
+let lastPosition = { x: 0, y: 0 };
+triangle.addEventListener('mousedown', function(event) {
+    console.log('Triangle has been clicked');
+    lastPosition = { x: event.clientX, y: event.clientY };
+});
+
+triangle.addEventListener('mousemove', function(event) {
+    if (event.buttons === 1) { // 檢查滑鼠左鍵是否被按下
+        if (event.clientX !== lastPosition.x || event.clientY !== lastPosition.y) {
+            console.log('Triangle has moved');
+            update_data();
+            lastPosition = { x: event.clientX, y: event.clientY };
+        }
+    }
+});
  
 export function present_info_by_country_code(country_code) {
     
@@ -149,8 +166,8 @@ export function remove_all() {
     
 }
 
-export function present_continent_data(country_data){
-    update_data();
+export async function present_continent_data(country_data){
+    await update_data();
     // console.log(country_data);
     let presenting_data = [];
     let drawing_data = [];
@@ -265,7 +282,7 @@ export function present_continent_data(country_data){
 
 function find_country_by_code(country_code) {
 
-    console.log(country_code);
+    // console.log(country_code);
     console.log(continent_data);
     let index = continent_data.findIndex(function(d) {
         return d["Code"] === country_code;
