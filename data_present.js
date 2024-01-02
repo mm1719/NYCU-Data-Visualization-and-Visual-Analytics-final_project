@@ -14,6 +14,9 @@ function update_data() {
     });
 }
 
+
+
+
 options.forEach(option => {
     option.addEventListener('click', function() {
         // console.log("change!")    
