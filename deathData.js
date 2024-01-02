@@ -49,8 +49,6 @@ async function loadData() {
 }
 
 export async function getData() {
-
-    
     let selectedDeathCause = sessionStorage.getItem("selectedDeathCause");
     let selectedYear = sessionStorage.getItem("selectedYear");
     let selectedGeo = sessionStorage.getItem("selectedGeo");
@@ -139,6 +137,9 @@ function sumByYear_all(data) {
 }
 
 function sumByYear_continents(data, continent, code) {
+    const duplicateData = data.some(row => row.Code === code);
+    if (duplicateData) return;
+
     const groupedByYear = data.reduce((acc, row) => {
         const year = row["Year"];
         if (!acc[year]) {

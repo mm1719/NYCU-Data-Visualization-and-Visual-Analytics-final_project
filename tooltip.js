@@ -10,13 +10,15 @@ getCountryJson();
 
 export function findEnglishNameByCode(countryCodeA2){
     
-    switch (countryCodeA2) {
-        case "AF": return "Africa";
-        case "AS": return "Asia";
-        case "EU": return "Europe";
-        case "NA": return "North America";
-        case "OC": return "Oceania";
-        case "SA": return "South America";
+    if(sessionStorage.getItem("selectedGeo") === "World") {
+        switch (countryCodeA2) {
+            case "AF": return "Africa";
+            case "AS": return "Asia";
+            case "EU": return "Europe";
+            case "NA": return "North America";
+            case "OC": return "Oceania";
+            case "SA": return "South America";
+        }
     }
 
     const country = data.find(country => country.country_a2 === countryCodeA2);
