@@ -25,6 +25,7 @@ function drawMap() {
         color_scale = d3.scaleSequential()
                 .domain([d3.min(country_data, function(d) { return d["Total death"]; }), d3.max(country_data, function(d) { return d["Total death"]; })])
                 .interpolator((t) => d3.interpolateBlues(t * 0.8 + 0.3));
+        present_continent_data(country_data);
         // console.log(color_scale.domain());
         
         d3.json("./data/countries/AF/AF-topojson.json").then(function(geojson) {
