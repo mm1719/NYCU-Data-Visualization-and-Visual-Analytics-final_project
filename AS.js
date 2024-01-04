@@ -75,7 +75,7 @@ options.forEach(option => {
 yearButtons.forEach(button => {
     button.addEventListener('click', function() {
         // console.log("change!")
-        drawMap(); // 假設您有一個函數可以根據新的數據繪製地圖
+        drawMap(); 
     });
 });
 

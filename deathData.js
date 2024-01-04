@@ -227,3 +227,8 @@ export function get_country_data( country_code ) {
     const counrty_data = filteredData.filter(d => d.Code === country_code);
     return counrty_data;
 }
+
+export function get_continent_data( continent_code ) {
+    const continent_data = filteredData.filter(d => d.Code === continent_code);
+    return continent_data;
+}
