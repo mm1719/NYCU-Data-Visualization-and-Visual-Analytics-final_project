@@ -1,4 +1,3 @@
-
 import { get_country_data, getData, get_continent_data } from "./deathData.js";
 const svg = d3.select("svg");
 const tooltip = d3.select("#tooltip");
@@ -48,13 +47,18 @@ triangle.addEventListener('mousemove', function(event) {
 });
  
 export function present_info_by_country_code(country_code) {
-    
+    if (country_code === "USG") country_code = "CUB";
+    if (country_code === "ESB") country_code = "CYP";
+    if (country_code === "PSX") country_code = "PSE";
+    if (country_code === "SDS") country_code = "SSD";
+
     let country_data; 
     country_data =  get_country_data(country_code)[0];
-    //console.log(country_data);
+    console.log(country_code);
     let presenting_data = [];
     let drawing_data = [];
     let keys = Object.keys(country_data);
+    //console.log(country_data);
     let total_deaths = 0;
     presenting_data.push({label: "Country/Territory", value: country_data["Country/Territory"]});
     presenting_data.push({label: "Total death", value: total_deaths});
@@ -69,6 +73,8 @@ export function present_info_by_country_code(country_code) {
     for(let i = 2; i < presenting_data.length; i++) {
         presenting_data[i].value = Math.round(presenting_data[i].value / total_deaths * 10000) / 100;
     }
+
+    console.log(drawing_data);
 
     // console.log(presenting_data);
     const width = 200, height = 200;

@@ -121,6 +121,10 @@ function data_preprocess(data) {
 function fill_path_color(country_code) {
     // console.log(country_code);
     // find the index of the country in the country_data
+    if (country_code === "USG") country_code = "CUB";
+    if (country_code === "ESB") country_code = "CYP";
+    if (country_code === "PSX") country_code = "PSE";
+    if (country_code === "SDS") country_code = "SSD";
     let index = country_data.findIndex(function(d) {
         return d["Code"] === country_code;
     });
