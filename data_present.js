@@ -109,8 +109,12 @@ export function present_info_by_country_code(country_code) {
         .data(presenting_data)
         .enter()
         .append("text")
-        .attr("x", 900) // Adjust this value to position your text
-        .attr("y", function(d, i) { return 30 + i * 15; }) // Adjust this value to position your text
+        .attr("x", function(d, i) { 
+            return i < presenting_data.length / 2 ? 900 : 1200; 
+        })
+        .attr("y", function(d, i) { 
+            return 10 + (i < presenting_data.length / 2 ? i : i - presenting_data.length / 2) * 15; 
+        })
         .text(function(d) { return d.label + ": " + d.value + `${d.label !== "Country/Territory" ? (d.label !== "Total death" ? "%": " "): " "}`; })
         .attr("font-family", "Times New Roman")
         .attr("font-size", "15px")
@@ -121,7 +125,7 @@ export function present_info_by_country_code(country_code) {
     
 
     let chartGroup = svg.append("g")
-                        .attr("transform", "translate(1300, 200)");
+                        .attr("transform", "translate(950, 410)");
 
     
  
@@ -227,7 +231,7 @@ export async function present_continent_data(country_data){
     .enter()
     .append("text")
     .attr("x", function(d, i) { 
-        return i < presenting_data.length / 2 ? 900 : 1100; 
+        return i < presenting_data.length / 2 ? 900 : 1200; 
     })
     .attr("y", function(d, i) { 
         return 10 + (i < presenting_data.length / 2 ? i : i - presenting_data.length / 2) * 15; 
@@ -242,7 +246,7 @@ export async function present_continent_data(country_data){
     
 
     let chartGroup = svg.append("g")
-                        .attr("transform", "translate(1000, 400)");
+                        .attr("transform", "translate(950, 410)");
 
     
  
@@ -339,7 +343,7 @@ export async function present_world_data(world_data) {
     .enter()
     .append("text")
     .attr("x", function(d, i) { 
-        return i < presenting_data.length / 2 ? 900 : 1100; 
+        return i < presenting_data.length / 2 ? 900 : 1200; 
     })
     .attr("y", function(d, i) { 
         return 10 + (i < presenting_data.length / 2 ? i : i - presenting_data.length / 2) * 15; 
@@ -354,7 +358,7 @@ export async function present_world_data(world_data) {
     
 
     let chartGroup = svg.append("g")
-                        .attr("transform", "translate(1000, 400)");
+                        .attr("transform", "translate(950, 410)");
 
     
  
@@ -455,8 +459,12 @@ export function present_info_by_continent_code(continent_code) {
         .data(presenting_data)
         .enter()
         .append("text")
-        .attr("x", 900) // Adjust this value to position your text
-        .attr("y", function(d, i) { return 30 + i * 15; }) // Adjust this value to position your text
+        .attr("x", function(d, i) { 
+            return i < presenting_data.length / 2 ? 900 : 1200; 
+        })
+        .attr("y", function(d, i) { 
+            return 10 + (i < presenting_data.length / 2 ? i : i - presenting_data.length / 2) * 15; 
+        })
         .text(function(d) { return d.label + ": " + d.value + `${d.label !== "Country/Territory" ? (d.label !== "Total death" ? "%": " "): " "}`; })
         .attr("font-family", "Times New Roman")
         .attr("font-size", "15px")
@@ -467,7 +475,7 @@ export function present_info_by_continent_code(continent_code) {
     
 
     let chartGroup = svg.append("g")
-                        .attr("transform", "translate(1300, 200)");
+                        .attr("transform", "translate(950, 410)");
 
     
  
