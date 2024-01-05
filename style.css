@@ -53,7 +53,7 @@
     cursor: pointer;
     font-size: 12px;
     font-weight: bold;
-    transform: translate(820px, -160px);
+    transform: translate(820px, -260px);
     z-index: 9999;
 }
 
@@ -68,7 +68,7 @@
     flex-direction: column;
     align-items: center;
     margin-right: 0.001px; /* Space between each year, adjust as needed */
-    transform: translate(100px, -100px);  
+    transform: translate(100px, -150px);  
 }
 
 .year {
@@ -105,7 +105,7 @@
 #draggable-triangle {
     position: absolute;
     cursor: move; /* Indicates the element is draggable*/
-    transform: translate(103px, -170px); /* Center the triangle*/
+    transform: translate(103px, -220px); /* Center the triangle*/
 }
 
 .dropdown {

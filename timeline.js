@@ -22,7 +22,7 @@ function handleButtonClick(event) {
 
     // Move the triangle to the new X position
     const triangle = document.getElementById("draggable-triangle");
-    triangle.style.transform = `translate(${triangleNewX}px, -170px)`;
+    triangle.style.transform = `translate(${triangleNewX}px, -220px)`;
 
     //setTriangle(clickedButton);
 }
@@ -58,7 +58,7 @@ function setTriangle(button) {
 
     // Move the triangle to the new X position
     const triangle = document.getElementById("draggable-triangle");
-    triangle.style.transform = `translate(${triangleNewX}px, -170px)`;
+    triangle.style.transform = `translate(${triangleNewX}px, -220px)`;
 }
 
 function handleYearSelection(year) {
