@@ -1,23 +1,19 @@
-name: Build and Deploy world.html
+name: Deploy HTML
 
 on:
   push:
     branches:
-      - '**'
-    paths:
-      - 'world.html'
+      - main  # or the branch of your choice
 
 jobs:
-    build-and-deploy:
-        runs-on: ubuntu-latest
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
 
-        steps:
-        - name: Checkout
-          uses: actions/checkout@v2
-
-        - name: Deploy to GitHub Pages
-          if: ${{ github.ref == 'refs/heads/main' }}
-          uses: peaceiris/actions-gh-pages@v3
-          with:
-            github_token: ${{ secrets.GITHUB_TOKEN }}
-            publish_dir: ./
+    - name: Deploy
+      uses: JamesIves/github-pages-deploy-action@4.1.4
+      with:
+        branch: gh-pages  # The branch the action should deploy to.
+        folder: .  # The folder the action should deploy.
