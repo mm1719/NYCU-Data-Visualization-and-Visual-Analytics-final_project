@@ -27,10 +27,16 @@ function drawMap() {
         present_continent_data(country_data);
         // console.log(color_scale.domain());
         d3.json("./data/countries/SA/SA-topojson.json").then(function(geojson) {
-                const countries = topojson.feature(geojson, geojson.objects.SA);
-            // console.log(countries);
-            present_continent_data(country_data);
-            svg.selectAll("path").data(countries.features)
+            const countries = topojson.feature(geojson, geojson.objects.SA);
+            console.log(countries.features);
+            //console.log(country_data);
+            countries.features.forEach(d => {
+                console.log(d.properties.country_a3);
+            });
+
+            svg.selectAll("path").data(countries.features, function(d) { 
+                return d && d.properties ? d.properties.country_a3 : null; 
+            })
                 .enter().append("path")
                 .attr("class", "countries")
                 .attr("d", pathGenerator)
@@ -41,7 +47,6 @@ function drawMap() {
                             .style("opacity", 1);
                     tooltip.text(findEnglishNameByCode(d.properties.country_a2));
                     present_info_by_country_code(d.properties.country_a3);
-        
                 })
                 .on("mousemove", function(event) {
                     tooltip.style("top", (event.pageY) + "px")
@@ -121,7 +126,7 @@ function data_preprocess(data) {
 }
 
 function fill_path_color(country_code) {
-    // console.log(country_code);
+    //console.log(country_code);
     // find the index of the country in the country_data
     if (country_code === "USG") country_code = "CUB";
     if (country_code === "ESB") country_code = "CYP";
@@ -134,7 +139,6 @@ function fill_path_color(country_code) {
         return "RGB(0,0,0)";
     }
     return color_scale(country_data[index]['Total death']);
-    
 }
 
 

@@ -28,9 +28,13 @@ function drawMap() {
         // console.log(color_scale.domain());
         d3.json("./data/countries/NA/NA-topojson.json").then(function(geojson) {
             const countries = topojson.feature(geojson, geojson.objects.NA);
-            // console.log(countries);
-            present_continent_data(country_data);
-            svg.selectAll("path").data(countries.features)
+            countries.features.forEach(d => {
+                console.log(d.properties.country_a3);
+            });
+
+            svg.selectAll("path").data(countries.features, function(d) { 
+                return d && d.properties ? d.properties.country_a3 : null; 
+            })
                 .enter().append("path")
                 .attr("class", "countries")
                 .attr("d", pathGenerator)
@@ -121,7 +125,7 @@ function data_preprocess(data) {
 }
 
 function fill_path_color(country_code) {
-    // console.log(country_code);
+    console.log(country_code);
     // find the index of the country in the country_data
     if (country_code === "USG") country_code = "CUB";
     if (country_code === "ESB") country_code = "CYP";

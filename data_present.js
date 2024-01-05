@@ -174,7 +174,7 @@ export function remove_all() {
 
 export async function present_continent_data(country_data){
     await update_data();
-    // console.log(country_data);
+    //console.log(country_data);
     let presenting_data = [];
     let drawing_data = [];
     let total_deaths = 0;

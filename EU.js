@@ -28,7 +28,13 @@ function drawMap() {
         present_continent_data(country_data);
         d3.json("./data/countries/EU/EU-topojson.json").then(function(geojson) {
             const countries = topojson.feature(geojson, geojson.objects.EU);
-            svg.selectAll("path").data(countries.features)
+            countries.features.forEach(d => {
+                console.log(d.properties.country_a3);
+            });
+            
+            svg.selectAll("path").data(countries.features, function(d) { 
+                return d && d.properties ? d.properties.country_a3 : null; 
+            })
                 .enter().append("path")
                 .attr("class", "countries")
                 .attr("d", pathGenerator)
