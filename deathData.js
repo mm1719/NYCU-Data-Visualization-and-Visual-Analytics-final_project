@@ -2,7 +2,7 @@ let allData, worldData, afData, asData, euData, naData, ocData, saData;
 let filteredData;
 async function loadData() {
     allData = await d3.csv("data/cause_of_deaths.csv");
-
+    //console.log(allData);
     afData = await selectContinentData("AF");
     asData = await selectContinentData("AS");
     euData = await selectContinentData("EU");
@@ -86,9 +86,18 @@ export async function getData() {
             default:
                 break;
         }
-        console.log(filteredData);
+        let seen = new Set();
+        let uniquefilteredData = filteredData.filter(item => {
+            if (seen.has(item.Code)) {
+                return false;
+            } else {
+                seen.add(item.Code);
+                return true;
+            }
+        });
+        console.log(uniquefilteredData);
         //console.log("Death Cause and Year are set!");
-        return filteredData;
+        return uniquefilteredData;
     }
 }
 
@@ -137,9 +146,6 @@ function sumByYear_all(data) {
 }
 
 function sumByYear_continents(data, continent, code) {
-    const duplicateData = data.some(row => row.Code === code);
-    if (duplicateData) return;
-
     const groupedByYear = data.reduce((acc, row) => {
         const year = row["Year"];
         if (!acc[year]) {
@@ -167,6 +173,8 @@ function sumByYear_continents(data, continent, code) {
 
 async function getWorldAndContinentsData() {
     const code = ["WD", "AF", "AS", "EU", "NA", "OC", "SA"];
+    let seen = new Set();
+    //console.log(allData);
     return allData.filter(d => code.includes(d.Code));
 }
 
